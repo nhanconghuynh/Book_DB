@@ -1,10 +1,27 @@
 package com.company;
 
-
+import java.util.Scanner;
 
 public class Book_LookUp {
 
+        public static void main(String[] args) {
+
+            Book_LookUp test = new Book_LookUp();
+
+            Scanner keybd = new Scanner(System.in);
+
+            System.out.print("Enter the Book Code: ");
+
+            String code = keybd.nextLine();
+
+            Book lookup = test.LookUp_SKU(code);
+            System.out.println(lookup.getDisplayText());
+
+        }
+
+
     private String code;
+
     private Book a = new Book();
     private Book b = new Book();
     private Book c = new Book();
@@ -12,36 +29,42 @@ public class Book_LookUp {
     private Book e = new Book();
     private Book f = new Book();
 
+    private Book blank = new Book();
 
-    public Book_LookUp(String str){
-
-        code = str;
-        LookUp_SKU(code);
-    }
-
-    public void LookUp_SKU(String str) {
-        AddBooks();
-        if (str.equalsIgnoreCase("Java1001"))
-        {
-            System.out.println(a.getDisplayText());
+    public Book LookUp_SKU( String code){
+        AddBooks(a, b, c, d, e, f);
+        switch (code){
+           case ("Java1001"):
+               return a;
+            case ("Java1002"):
+                return b;
+            case ("Orcl1003"):
+                return c;
+            case ("Python1004"):
+                return d;
+            case ("Zombie1005"):
+                return e;
+            case ("Rasp1006"):
+                return f;
+            default:
+                return blank;
         }
     }
 
-    public static void AddBooks(){
+    public static void AddBooks(Book a, Book b, Book c, Book d, Book e, Book f){
 
-//        Book a = new Book();
 
-        this.a.setCode("Java1001");
+        a.setCode("Java1001");
 
-        this.a.setTitle("Head First Java");
+        a.setTitle("Head First Java");
 
-        this.a.setAuthor("Kathy Sierra and Bert Bates");
+        a.setAuthor("Kathy Sierra and Bert Bates");
 
-        this.a.setPrice(47.50);
+        a.setPrice(47.50);
 
-        this.a.setDescription("Programming advice book");
+        a.setDescription("Programming advice book");
 
-        this.a.setisInStock(true);
+        a.setisInStock(true);
 
 //        System.out.println(a.getDisplayText());
 
@@ -55,7 +78,6 @@ public class Book_LookUp {
 
 */
 
- /*       Book b = new Book();
 
         b.setCode("Java1002");
 
@@ -69,10 +91,7 @@ public class Book_LookUp {
 
         b.setisInStock(true);
 
-        System.out.println(b.getDisplayText());
 
-
-        Book c = new Book();
 
         c.setCode("Orcl1003");
 
@@ -86,10 +105,6 @@ public class Book_LookUp {
 
         c.setisInStock(true);
 
-        System.out.println(c.getDisplayText());
-
-
-        Book d = new Book();
 
         d.setCode("Python1004");
 
@@ -103,10 +118,9 @@ public class Book_LookUp {
 
         d.setisInStock(true);
 
-        System.out.println(d.getDisplayText());
 
 
-        Book e = new Book();
+
 
         e.setCode("Zombie1005");
 
@@ -120,10 +134,7 @@ public class Book_LookUp {
 
         e.setisInStock(true);
 
-        System.out.println(e.getDisplayText());
 
-
-        Book f = new Book();
 
         f.setCode("Rasp1006");
 
@@ -137,7 +148,6 @@ public class Book_LookUp {
 
         f.setisInStock(true);
 
-        System.out.println(f.getDisplayText());
-*/
+
     }
 }
